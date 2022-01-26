@@ -20,37 +20,40 @@ const items = [
 ];
 
 class Card {
-  constructor(title, description, price, image) {
-    this._title = title;
-    this._description = description;
-    this._price = price;
-    this._image = image;
+  constructor(data, selector) {
+    this._title = data.title;
+    this._description = data.description;
+    this._price = data.price;
+    this._image = data.image;
+    this._selector = selector;
   }
 
   _getElement() {
     const cardElement = document
-      .querySelector('.horizontal-card')
+      .querySelector(this._selector)
       .content
       .querySelector('.card')
       .cloneNode(true);
 
     return cardElement;
   }
-  
+
   generate() {
-  this._element = this._getElement();
-    
-  this._element.querySelector('.card__image').style.backgroundImage = `url(${this._image})`;
-this._element.querySelector('.card__title').textContent = this._title;
-this._element.querySelector('.card__info').textContent = this._description;
-this._element.querySelector('.card__price-property').textContent = this._price;
-    
-  return this._element;   
+    this._element = this._getElement();
+
+    this._element.querySelector('.card__image').style.backgroundImage = `url(${this._image})`;
+    this._element.querySelector('.card__title').textContent = this._title;
+    this._element.querySelector('.card__info').textContent = this._description;
+    this._element.querySelector('.card__price-property').textContent = this._price;
+
+    return this._element;
   }
 }
 
-items.forEach((element) => {
-  const card = new Card(element.title, element.description, element.price, element.image);
+items.forEach((item) => {
+  const card = new Card(item, '.horizontal-card');
   const cardElement = card.generate();
-   document.querySelector('.card-list__items').append(cardElement);
-})
+
+  // Добавляем в DOM
+  document.querySelector('.card-list__items').append(cardElement);
+});
