@@ -19,6 +19,10 @@ const items = [
   },
 ];
 
+const popupElement = document.querySelector('.popup');
+const popupImage = document.querySelector('.popup__image');
+const popupCloseButton = document.querySelector('.popup__close');
+
 class Card {
   constructor(data, selector) {
     this._title = data.title;
@@ -45,8 +49,29 @@ class Card {
     this._element.querySelector('.card__title').textContent = this._title;
     this._element.querySelector('.card__info').textContent = this._description;
     this._element.querySelector('.card__price-property').textContent = this._price;
+    
+    this._setEventListeners();
 
     return this._element;
+  }
+  
+  _handleOpenPopup() {
+    popupImage.src = this._image;
+    popupElement.classList.add('popup_is-opened');
+  }
+  
+    _handleClosePopup() {
+    popupImage.src = '';
+    popupElement.classList.remove('popup_is-opened');
+  }
+  
+  _setEventListeners() {
+    this._element.addEventListener('click', () => {
+      this._handleOpenPopup();
+    })
+        popupCloseButton.addEventListener('click', () => {
+      this._handleClosePopup();
+    })
   }
 }
 
