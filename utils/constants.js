@@ -1,4 +1,4 @@
-const items = [
+export const items = [
   {
     image: 'https://code.s3.yandex.net/web-code/oop/card_detail.jpg',
     title: 'BIOLOID',
@@ -19,12 +19,24 @@ const items = [
   },
 ];
 
-const cardList = document.querySelector('.card-list__items');
-const popupElement = document.querySelector('.popup');
-const popupCloseButton = document.querySelector('.popup__close');
-const popupImage = document.querySelector('.popup__image');
-const popupCaption = document.querySelector('.popup__caption');
-const defaultCardButton = document.querySelector('.filter__button_type_grid');
-const horizontalCardButton = document.querySelector('.filter__button_type_column');
+export const filterButtons = [
+  {
+    buttonClass: 'filter__button_type_grid',
+    isGrid: true
+  },
+  {
+    buttonClass: 'filter__button_type_column',
+    isGrid: false
+  }
+];
 
-export { items, cardList, popupElement, popupCloseButton, popupImage, popupCaption, defaultCardButton, horizontalCardButton }
+export const cardListSelector = '.card-list__items';
+export const filterListSelector = '.filter';
+export const filterButtonTemplate = '.filter-button';
+export const cardList = document.querySelector('.card-list__items');
+export const popupElement = document.querySelector('.popup');
+export const popupCloseButton = document.querySelector('.popup__close');
+export const popupImage = document.querySelector('.popup__image');
+export const popupCaption = document.querySelector('.popup__caption');
+export const defaultCardButton = document.querySelector('.filter__button_type_grid');
+export const horizontalCardButton = document.querySelector('.filter__button_type_column');

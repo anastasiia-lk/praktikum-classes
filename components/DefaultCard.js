@@ -1,4 +1,6 @@
-import { Card } from './Card.js';
+import { popupCaption } from '../utils/constants.js';
+import Card from './Card.js';
+
 export default class DefaultCard extends Card {
   constructor(data, selector) {
     super(selector);
